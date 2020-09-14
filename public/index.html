@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="style/menu.css">
+</head>
+<body>
+    <nav>
+        
+    </nav>
+    <header>
+        convert image to base64 Qrcode
+    </header>
+    <div>
+        <input type="file" id="myFile" oninput="fileIn()">
+    </div>
+    <div class="out">
+        <center>
+        <div id="qrHere"></div>
+        <canvas id="canvas"></canvas>
+        </center>
+    </div>
+    <script src="/scripts/menu.js"></script>
+    <!-- <script src="scripts/bundle.js"></script> -->
+    <!-- <script src="build/qrcode.min.js"></script> -->
+    <script src="scripts/qr.js"></script>
+</body>
+</html>
