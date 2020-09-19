@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>scan qr code</h2>
+    <div id="reader" style="width:500px"></div>
+    <div id="output"></div>
+<script src="scripts/html5-qrcode-reader.min.js"></script>
+<script>
+    function onScan(message){
+        console.log(message);
+        appendToh2(message);
+        qrScan.clear();
+    }
+    const qrScan = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
+    qrScan.render(onScan);
+    function appendToh2(text){
+        let container = document.getElementById('output');
+        let elem = document.createElement('h2');
+        let txt = document.createTextNode(text);
+        elem.appendChild(txt);
+        container.appendChild(elem);
+
+    }
+</script>
+</body>
+</html>

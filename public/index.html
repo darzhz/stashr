@@ -2,28 +2,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="blueviolet">
     <title>Menu</title>
-    <link rel="stylesheet" href="style/menu.css">
 </head>
 <body>
-    <nav>
-        
-    </nav>
-    <header>
-        convert image to base64 Qrcode
-    </header>
-    <div>
+    <style>
+        body {
+    margin: 0;
+    background-color: black;
+    height: 100vh;
+    color:white;
+    width: 100vw;
+    }
+    #myFile {
+        display: block;
+    position: absolute;
+    width: fit-content;
+    float: right;
+    background-color: #00000098;
+    box-shadow: inset 0px 0px 6px 0px blueviolet;
+    border-radius: 3%;
+        left: 33%;
+    }
+::-webkit-file-upload-button{
+        background-color: rgba(156, 28, 241, 0.644);
+        border: none;
+        border-radius: 15px;
+        color: white;
+        font-family: cursive;
+    }
+   #next {
+        float: right;
+        position: relative;
+        top: 3vh;
+        font-size: xxx-large;
+        z-index: 2;
+    }
+    #prev {
+        font-size: xxx-large;
+        top: 3vh;
+        position: relative;
+        z-index: 2;
+    }
+    .out {
+        /* position: fixed;
+        top: 27%;
+        width: fit-content;
+        left: 34%;
+        border: 20px solid; */
+        position: relative;
+        top: 27%;
+        width: fit-content;
+        /* left: 25vw; */
+        border: 20px solid;
+        margin: 5% auto;
+        z-index: 1;
+}
+    i {
+        color: white;
+        size: 2.2rem;
+    }
+    #head h2{
+        background-color: blueviolet;
+        text-align: center;
+        padding-bottom: 1%;
+    }
+    </style>
+    
+    <div id="head">
+        <h2>Stashr : Image to QR</h2>
         <input type="file" id="myFile" oninput="fileIn()">
     </div>
     <div class="out">
-        <center>
         <div id="qrHere"></div>
-        <canvas id="canvas"></canvas>
-        </center>
     </div>
+    <i id ="next" class="fa fa-chevron-circle-right"></i>
+    <i id ="prev" class="fa fa-chevron-circle-left"></i>
+
     <script src="/scripts/menu.js"></script>
-    <!-- <script src="scripts/bundle.js"></script> -->
-    <!-- <script src="build/qrcode.min.js"></script> -->
     <script src="scripts/qr.js"></script>
+    <script src="scripts/compressor.js"></script>
+    <script src="https://use.fontawesome.com/221305425c.js"></script>
 </body>
 </html>
