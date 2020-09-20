@@ -1,6 +1,5 @@
 const express = require('express');
 const qr = require('qrcode');
-let currentSearch = [];
 const { request, response } = require('express');
 const app = express();
 app.listen(3000, () => {console.log('running at port 3000')});
