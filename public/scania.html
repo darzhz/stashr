@@ -58,7 +58,6 @@
         button.addEventListener("click", () => {
           let arr = rmDupli(urlCon);
           let text = arr.join("");
-          alert(text);
           appendToh2(text);
           qrScan.clear();
         });
@@ -73,8 +72,10 @@
         let list = document.createElement("li");
         let a = document.createElement("a");
         let attr = document.createAttribute("href");
+        let string = document.createTextNode("clickhere");
         attr.value = text;
-        a.appendChild(attr);
+        a.setAttributeNode(attr);
+        a.appendChild(string);
         list.appendChild(a);
         container.appendChild(list);
       }
