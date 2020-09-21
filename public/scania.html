@@ -1,77 +1,92 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <style>
-    #reader__dashboard_section_csr button{
+      #reader__dashboard_section_csr button {
         width: 99px;
-    height: 52px;
-    border-radius: 16%;
-    background-color: red;
-    font-size: xx-small;
-    color: white;
-    border: none;
-    box-shadow: 0px 0px 13px lightgreen;
-    }
-        body {
-            margin: 0;
-    padding: 0;
-    background-color: black;
-    color: white;
-    width: 100vw;
-    position: relative;
-        }
-        h2{
-            text-align: center;
-        }
-        #reader {
-            height: 70vh;
-            width: 99%;
-            position: relative;
-            padding: 0px;
-            border: 1px solid blueviolet;
-            border-radius: 18px;
-        }
-        /* #reader span{
+        height: 52px;
+        border-radius: 16%;
+        background-color: red;
+        font-size: xx-small;
+        color: white;
+        border: none;
+        box-shadow: 0px 0px 13px lightgreen;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        color: white;
+        width: 100vw;
+        position: relative;
+      }
+      h2 {
+        text-align: center;
+      }
+      #reader {
+        height: 70vh;
+        width: 99%;
+        position: relative;
+        padding: 0px;
+        border: 1px solid blueviolet;
+        border-radius: 18px;
+      }
+      /* #reader span{
             display:none;
         }problem here */
-        #reader__dashboard{
-            position: fixed;
-            top: 80vh;
-            left: -12px;
-        }
+      #reader__dashboard {
+        position: fixed;
+        top: 80vh;
+        left: -12px;
+      }
     </style>
     <h2>scan qr code</h2>
-    <div id="reader" style="width:100%"></div>
+    <div id="reader" style="width: 100%"></div>
     <div id="output"></div>
-<script src="scripts/html5-qrcode-reader.min.js"></script>
-<script>
-    let urlCon = [];
-    function onScan(message){
+    <script src="scripts/html5-qrcode-reader.min.js"></script>
+    <script>
+      let urlCon = [];
+      function onScan(message) {
         console.log(message);
-        if(!urlCon.includes(message)){
         urlCon.push(message);
-        }
-      let button = document.getElementById("reader__dashboard_section_csr");
-      button.addEventListener('click',() =>{
+        alert("got it");
+        let button = document.getElementById("reader__dashboard_section_csr");
+        button.addEventListener("click", () => {
+          let arr = rmDupli(urlCon);
+          let text = arr.join("");
+          alert(text);
+          appendToh2(text);
           qrScan.clear();
-      })
+        });
 
         //appendToh2(message);
-       // qrScan.clear();
-    }
-    const qrScan = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
-    qrScan.render(onScan);
-    function appendToh2(text){
-        let container = document.getElementById('output');
-        let elem = document.createElement('h2');
-        let txt = document.createTextNode(text);
-        elem.appendChild(txt);
-        container.appendChild(elem);
-    }
-</script>
-</body>
+        // qrScan.clear();
+      }
+      const qrScan = new Html5QrcodeScanner("reader", { fps: 12, qrbox: 250 });
+      qrScan.render(onScan);
+      function appendToh2(text) {
+        let container = document.getElementById("output");
+        let list = document.createElement("li");
+        let a = document.createElement("a");
+        let attr = document.createAttribute("href");
+        attr.value = text;
+        a.appendChild(attr);
+        list.appendChild(a);
+        container.appendChild(list);
+      }
+      function rmDupli(arr) {
+        let uniq = [];
+        arr.forEach((element) => {
+          if (!uniq.includes(element)) {
+            uniq.push(element);
+          }
+        });
+        return uniq;
+      }
+    </script>
+  </body>
 </html>

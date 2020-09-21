@@ -55,7 +55,7 @@ function makeQr(file){
         height: 200,
         colorDark : "black",
         colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
+        correctLevel : QRCode.CorrectLevel.Q
     });
 }
 function splitIt(arr,text,divident){
